@@ -10,6 +10,7 @@ editor: visual
 ## Load libraries
 
 ```{r}
+#| message: false
 library(tidyverse)
 library(broom)  # devtools::install_github("tidymodels/broom")
 library(cowplot)
