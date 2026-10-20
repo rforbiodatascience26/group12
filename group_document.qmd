@@ -28,3 +28,12 @@ write_csv(x = ENV,
 ```
 
 ## s263479
+
+A code from lab6 on how to create a new Augment data (T4)
+
+```{r}
+gravier_clean_aug <- gravier_clean |>
+  mutate(y = case_when(y == "poor" ~ 1,
+                       y == "good" ~ 0)) |> 
+  relocate(early_metastasis = y)
+```
