@@ -27,6 +27,31 @@ write_csv(x = ENV,
           file = str_c(raw_data_path, "ENV_pitlatrine.csv"))
 ```
 
+#### New feature
+
+some very cool feature is here
+
+and some very relevant code
+
+```{r}
+SPE |> 
+  pivot_longer(cols = -Taxa,
+               names_to = "Samples",
+               values_to = "OTU_Count")  |> 
+  full_join(ENV, by = "Samples") |> 
+  mutate(site = case_when(str_detect(Samples, "^T") ~ "Tanzania",
+                          str_detect(Samples, "^V") ~ "Vietnam")) |>  
+  write_tsv(file = "data/SPE_ENV.tsv")
+```
+
+```{r}
+et.seed(676571)
+cancer_data=mutate(as_tibble(pluck(gravier,"x")),y=pluck(gravier,"y"),pt_id=1:length(pluck(gravier, "y")),age=round(rnorm(length(pluck(gravier,"y")),mean=55,sd=10),1))
+cancer_data=rename(cancer_data,event_label=y)
+cancer_data$age_group=cut(cancer_data$age,breaks=seq(10,100,by=10))
+cancer_data=relocate(cancer_data,c(pt_id,age,age_group,pt_id,event_label))
+```
+
 ## s263479
 
 A code from lab6 on how to create a new Augment data (T4)
