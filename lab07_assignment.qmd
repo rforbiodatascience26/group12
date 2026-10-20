@@ -38,7 +38,7 @@ pca_fit <- biopsy |>
 
 ### Data in PC coordinates
 
-We would like to plot the data. First we remove categorical variables from PCA and combining it with the original data.
+We would like to plot the data. First we remove categorical variables from PCA and combining them with the original data.
 
 ```{r}
 pca_fit |>
