@@ -20,4 +20,12 @@ output_file <- "data/gravier.RData"
 curl::curl_download(url = target_url, destfile = output_file)
 ```
 
+## Tidying
+
+```{r}
+pca_fit <- cancer_data |>
+  select(where(is.numeric)) %>% # retain only numeric columns
+  prcomp(scale = TRUE) 
+```
+
 ## Analysis
