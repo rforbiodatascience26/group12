@@ -23,6 +23,8 @@ biopsy <- read_csv("https://wilkelab.org/classes/SDS348/data_sets/biopsy.csv")
 
 ## Tidying
 
+We would like to get rid of the non-numeric data and scale the data values to unit variance before PCA.
+
 ```{r}
 pca_fit <- biopsy |>
   select(where(is.numeric)) |> # retain only numeric columns
@@ -30,6 +32,10 @@ pca_fit <- biopsy |>
 ```
 
 ## Analysis
+
+### Data in PC coordinates
+
+We would like to plot the data. First we remove categorical variables from PCA and combining it with the original data.
 
 ```{r}
 pca_fit |>
@@ -42,10 +48,16 @@ pca_fit |>
   theme_half_open(12) + background_grid()
 ```
 
+### Rotation Matrix
+
+We extract the rotation matrix.
+
 ```{r}
 pca_fit |>
   tidy(matrix = "rotation")
 ```
+
+We define features of our plot and then we plot it.
 
 ```{r}
 # define arrow style for plotting
