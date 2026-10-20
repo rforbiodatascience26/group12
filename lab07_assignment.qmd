@@ -1,5 +1,6 @@
 ---
 title: "Lab07 assignment"
+author: "group12"
 format:
   html:
     embed-resources: true
