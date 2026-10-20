@@ -6,4 +6,25 @@ editor: visual
 
 ## s260367
 
+some important text and some random code from the course material
+
+```{r}
+#| message: false
+library("tidyverse")
+
+```
+
+```{r}
+base_url <- "http://userweb.eng.gla.ac.uk/umer.ijaz/bioinformatics/ecological/"
+raw_data_path <- "data/_raw/"
+
+SPE <- read_csv(file = str_c(base_url, "SPE_pitlatrine.csv"))
+write_csv(x = SPE,
+          file = str_c(raw_data_path, "SPE_pitlatrine.csv"))
+
+ENV <- read_csv(file = str_c(base_url, "ENV_pitlatrine.csv"))
+write_csv(x = ENV,
+          file = str_c(raw_data_path, "ENV_pitlatrine.csv"))
+```
+
 ## s263479
