@@ -18,23 +18,13 @@ library(cowplot)
 ## Load data
 
 ```{r}
-target_url <- "https://github.com/ramhiser/datamicroarray/raw/master/data/gravier.RData"
-output_file <- "data/gravier.RData"
-curl::curl_download(url = target_url, destfile = output_file)
-```
-
-```{r}
-set.seed(676571)
-cancer_data=mutate(as_tibble(pluck(gravier,"x")),y=pluck(gravier,"y"),pt_id=1:length(pluck(gravier, "y")),age=round(rnorm(length(pluck(gravier,"y")),mean=55,sd=10),1))
-cancer_data=rename(cancer_data,event_label=y)
-cancer_data$age_group=cut(cancer_data$age,breaks=seq(10,100,by=10))
-cancer_data=relocate(cancer_data,c(pt_id,age,age_group,pt_id,event_label))
+biopsy <- read_csv("https://wilkelab.org/classes/SDS348/data_sets/biopsy.csv")
 ```
 
 ## Tidying
 
 ```{r}
-pca_fit <- cancer_data |>
+pca_fit <- biopsy |>
   select(where(is.numeric)) |> # retain only numeric columns
   prcomp(scale = TRUE) 
 ```
@@ -43,11 +33,11 @@ pca_fit <- cancer_data |>
 
 ```{r}
 pca_fit |>
-  augment(cancer_data) |> # add original dataset back in
-  ggplot(aes(.fittedPC1, .fittedPC2, color = event_label)) + 
+  augment(biopsy) |> # add original dataset back in
+  ggplot(aes(.fittedPC1, .fittedPC2, color = outcome)) + 
   geom_point(size = 1.5) +
   scale_color_manual(
-    values = c(poor = "#D55E00", good = "#0072B2")
+    values = c(malignant = "#D55E00", benign = "#0072B2")
   ) +
   theme_half_open(12) + background_grid()
 ```
