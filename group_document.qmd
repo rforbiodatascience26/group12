@@ -62,3 +62,25 @@ gravier_clean_aug <- gravier_clean |>
                        y == "good" ~ 0)) |> 
   relocate(early_metastasis = y)
 ```
+
+## New Analysis
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+library(palmerpenguins)
+```
+
+```{r}
+library(ggthemes)
+```
+
+```{r}
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point()
+```
