@@ -42,11 +42,11 @@ pca_fit <- cancer_data |>
 
 ```{r}
 pca_fit |>
-  augment(canser_data) |> # add original dataset back in
-  ggplot(aes(.fittedPC1, .fittedPC2, color = outcome)) + 
+  augment(cancer_data) |> # add original dataset back in
+  ggplot(aes(.fittedPC1, .fittedPC2, color = event_label)) + 
   geom_point(size = 1.5) +
   scale_color_manual(
-    values = c(malignant = "#D55E00", benign = "#0072B2")
+    values = c(poor = "#D55E00", good = "#0072B2")
   ) +
   theme_half_open(12) + background_grid()
 ```
