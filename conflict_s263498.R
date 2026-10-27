@@ -1,5 +1,5 @@
 Top 10 Bio Data Science Languages of ALL Time:
 1. Python
-2. C
+2. Java
 3. C++
 
