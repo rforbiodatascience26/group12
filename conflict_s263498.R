@@ -1,2 +1,2 @@
 Top 10 Bio Data Science Languages of ALL Time:
-1. R
+1. Julia
